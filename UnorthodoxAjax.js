@@ -7,8 +7,6 @@ function asyncRefresh(asyncURL, asyncRefreshIntervalMS) {
   asyncReq.setAttribute("id","asyncReq");
   document.body.append(asyncReq);
 
-  // Keep polling every asyncRefreshIntervalMS seconds.  
-  // NOTE: Naive approach with no knowledge if previous requests were successful.  Could enhance to remember previous requests.
   window.setTimeout(
     function() { 
       var existingRef = document.getElementById("asyncReq");
@@ -23,3 +21,11 @@ function asyncRefresh(asyncURL, asyncRefreshIntervalMS) {
 // Somepage.php
 // EG:
 asyncRefresh("https://www.test.com/checkForUpdates.php",10000);
+
+// Somepage.php will return javascript to manipulate the current page in some way.
+// IE:
+// samepage.php returns a JSONObject and calls processResponse() javascript to trigger the immediate processing the return data.
+
+// EG:
+// asyncRefresh("page.php?action=DELETE&id=10&sessionData=xxxx");
+// page.php checks for action==delete, then checks for authorization, and t hen returns a json response along with processResponse()
