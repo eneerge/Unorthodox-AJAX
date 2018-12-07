@@ -7,7 +7,7 @@ function asyncRefresh(asyncURL, asyncRefreshIntervalMS) {
   asyncReq.setAttribute("id","asyncReq");
   document.body.append(asyncReq);
 
-  // Keep polling every 10 seconds.  
+  // Keep polling every asyncRefreshIntervalMS seconds.  
   // NOTE: Naive approach with no knowledge if previous requests were successful.  Could enhance to remember previous requests.
   window.setTimeout(
     function() { 
