@@ -1,14 +1,16 @@
 // UnorthodoxAjax.js
 function asyncRefresh(asyncURL, asyncRefreshIntervalMS) {
   // Write out a script tag to cause the browser to retrieve it
-  var ajax = document.createElement("script");
-  ajax.setAttribute("type","text/javascript");
-  ajax.setAttribute("src",asyncURL);
-  ajax.setAttribute("id","ajax");
-  document.body.append(ajax);
+  var asyncReq = document.createElement("script");
+  asyncReq.setAttribute("type","text/javascript");
+  asyncReq.setAttribute("src",asyncURL);
+  asyncReq.setAttribute("id","asyncReq");
+  document.body.append(asyncReq);
 
   window.setTimeout(
     function() { 
+      var existingRef = document.getElementById("asyncReq");
+      existingReg.parentNode.removeChild(existingRef);
       asyncRefresh(asyncURL, asyncRefreshIntervalMS);
     }
     ,asyncRefreshIntervalMS
