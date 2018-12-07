@@ -9,7 +9,7 @@ function asyncProcessResponse(obj) {
   // Do some more stuff with the response obj
 }
 
-// Now lets wireup the refreshing interval
+// Now lets wireup the refreshing interval so that  a script tag will be removed and recreated every 10 seconds that polls checkForUpdates.php
 window.addEventListener(
   "load"
   ,function() {
@@ -17,6 +17,4 @@ window.addEventListener(
   }
   ,false
 );
-
-// Now a script tag will be removed and recreated every 10 seconds that polls checkForUpdates.php
 </script>
