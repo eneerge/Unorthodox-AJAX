@@ -24,8 +24,3 @@ function asyncRefresh(asyncURL, asyncRefreshIntervalMS) {
     ,asyncRefreshIntervalMS
   );
 }
-
-// Code this to process the resulting data
-function asyncProcessResponse() {
-  // Code me to do something with the response data
-}
