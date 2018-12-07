@@ -10,7 +10,7 @@ function asyncRefresh(asyncURL, asyncRefreshIntervalMS) {
   window.setTimeout(
     function() { 
       var existingRef = document.getElementById("asyncReq");
-      existingReg.parentNode.removeChild(existingRef);
+      existingRef.parentNode.removeChild(existingRef);
       asyncRefresh(asyncURL, asyncRefreshIntervalMS);
     }
     ,asyncRefreshIntervalMS
