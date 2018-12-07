@@ -1,17 +1,21 @@
-var ajax = document.createElement("script");
-ajax.setAttribute("type","text/javascript");
-ajax.setAttribute("src","https://test.com/request1");
-ajax.setAttribute("id","ajax");
-document.body.append(ajax);
-
-// If request worked, and inside of that file it calls initLoad(), it can contiuously keep communicating
-function initLoad() {
-  var ajax = document.getElementById("ajax");
-  ajax.parentNode.removeChild(ajax);
-
+// UnorthodoxAjax.js
+function asyncRefresh(asyncURL, asyncRefreshIntervalMS) {
+  // Write out a script tag to cause the browser to retrieve it
   var ajax = document.createElement("script");
   ajax.setAttribute("type","text/javascript");
-  ajax.setAttribute("src","https://test.com/request2");
+  ajax.setAttribute("src",asyncURL);
   ajax.setAttribute("id","ajax");
   document.body.append(ajax);
+
+  window.setTimeout(
+    function() { 
+      asyncRefresh(asyncURL, asyncRefreshIntervalMS);
+    }
+    ,asyncRefreshIntervalMS
+  );
 }
+
+// -------------------------------------
+// Somepage.php
+// EG:
+asyncRefresh("https://www.test.com/checkForUpdates.php",10000);
